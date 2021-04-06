@@ -11,7 +11,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'docker build -t ex-django-app'
+                sh 'pip install -U -r requirements.txt'
             }
         }
 //         stage('Test') {
