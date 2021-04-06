@@ -11,7 +11,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'pip install -U -r requirements.txt'
+                sh 'pip install -U -r requirements.txt --user'
             }
         }
 //         stage('Test') {
