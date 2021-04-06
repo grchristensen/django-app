@@ -11,7 +11,7 @@ pipeline {
                 }
             }
             steps {
-                docker build -t ex-django-app
+                sh 'docker build -t ex-django-app'
             }
         }
 //         stage('Test') {
