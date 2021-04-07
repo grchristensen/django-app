@@ -43,7 +43,7 @@ pipeline {
                 success {
                     script {
                         docker.withRegistry( '', registryCredential ) {
-                            sh 'docker push grchr/tdd-djang-app:1.0'
+                            sh 'docker push grchr/tdd-django-app:1.0'
                         }
                     }
                 }
