@@ -23,7 +23,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'python3 manage.py test'
+                sh 'python manage.py test'
             }
         }
 //         stage('Deliver') {
