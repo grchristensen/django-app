@@ -40,8 +40,11 @@ pipeline {
             }
             post {
                 success {
-                    sh 'docker login -u grchr -p N0p30p@l'
-                    sh 'docker push grchr/tdd-django-app:1.0'
+                    script {
+                        docker.withRegistry( '', registryCredential ) {
+                            dockerImage.push()
+                        }
+                    }
                 }
             }
         }
