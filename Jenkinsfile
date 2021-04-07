@@ -11,7 +11,9 @@ pipeline {
                 }
             }
             steps {
-                sh 'pip install -U -r requirements.txt --user'
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                  sh "pip install -r requirements.txt --user"
+                }
             }
         }
 //         stage('Test') {
