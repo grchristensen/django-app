@@ -36,14 +36,13 @@ pipeline {
 //                 IMAGE = 'cdrx/pyinstaller-linux:python2'
 //             }
             steps {
-                sh 'docker build -t django-app .'
+                sh 'docker build -t grchr/tdd-django-app:1.0 .'
             }
-//             post {
-//                 success {
-//                     archiveArtifacts "${env.BUILD_ID}/sources/dist/add2vals"
-//                     sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
-//                 }
-//             }
+            post {
+                success {
+                    sh 'docker push grchr/tdd-django-app:1.0'
+                }
+            }
         }
     }
 }
