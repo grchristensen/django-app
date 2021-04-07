@@ -25,9 +25,6 @@ pipeline {
             steps {
                 sh 'python manage.py test'
             }
-            post {
-
-            }
         }
 //         stage('Deliver') {
 //             agent any
