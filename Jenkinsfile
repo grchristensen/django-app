@@ -23,7 +23,10 @@ pipeline {
                 }
             }
             steps {
-                sh 'python manage.py test'
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    sh "pip install -r requirements.txt --user"
+                    sh 'python manage.py test'
+                }
             }
         }
 //         stage('Deliver') {
