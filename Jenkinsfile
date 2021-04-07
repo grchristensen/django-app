@@ -31,10 +31,11 @@ pipeline {
         }
         stage('Deliver') {
             agent any
-//             environment {
-//                 VOLUME = '$(pwd)/sources:/src'
-//                 IMAGE = 'cdrx/pyinstaller-linux:python2'
-//             }
+            environment {
+//                 registry = "YourDockerhubAccount/YourRepository"
+                registryCredential = 'dockerhub_id'
+//                 dockerImage = ''
+            }
             steps {
                 sh 'docker build -t grchr/tdd-django-app:1.0 .'
             }
@@ -42,7 +43,7 @@ pipeline {
                 success {
                     script {
                         docker.withRegistry( '', registryCredential ) {
-                            dockerImage.push()
+                            sh 'docker push grchr/tdd-djang-app:1.0'
                         }
                     }
                 }
