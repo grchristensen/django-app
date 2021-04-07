@@ -40,7 +40,9 @@ pipeline {
             }
             post {
                 success {
-                    sh 'docker push grchr/tdd-django-app:1.0'
+                    checkout scm
+                    def customImage = docker.build("grchr/tdd-django-app:${env.BUILD_ID}")
+                    customImage.push()
                 }
             }
         }
