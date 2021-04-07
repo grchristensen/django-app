@@ -7,11 +7,11 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'python:3-alpine'
+                    image 'python:3'
                 }
             }
             steps {
-                sh 'pip install -U -r requirements.txt'
+                sh 'pip install -U -r requirements.txt --user'
             }
         }
 //         stage('Test') {
