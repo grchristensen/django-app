@@ -39,6 +39,7 @@ pipeline {
                 withEnv(["HOME=${env.WORKSPACE}"]) {
                     sh "pip install -r requirements.txt --user"
                     sh 'python manage.py runserver'
+                    sh '^C'
                 }
             }
         }
