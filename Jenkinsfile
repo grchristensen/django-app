@@ -36,7 +36,7 @@ pipeline {
 //                 IMAGE = 'cdrx/pyinstaller-linux:python2'
 //             }
             steps {
-                sh 'docker build -t django-app'
+                sh 'docker build -t django-app .'
             }
 //             post {
 //                 success {
