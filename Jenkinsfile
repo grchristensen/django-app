@@ -30,18 +30,20 @@ pipeline {
             }
         }
         stage('Deliver') {
-            agent {
-                docker {
-                    image 'python:3'
-                }
-            }
+            agent any
+//             environment {
+//                 VOLUME = '$(pwd)/sources:/src'
+//                 IMAGE = 'cdrx/pyinstaller-linux:python2'
+//             }
             steps {
-                withEnv(["HOME=${env.WORKSPACE}"]) {
-                    sh "pip install -r requirements.txt --user"
-                    sh 'python manage.py runserver'
-                    sh '^C'
-                }
+                sh 'docker build -t django-app'
             }
+//             post {
+//                 success {
+//                     archiveArtifacts "${env.BUILD_ID}/sources/dist/add2vals"
+//                     sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
+//                 }
+//             }
         }
     }
 }
